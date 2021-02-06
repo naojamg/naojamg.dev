@@ -1,32 +1,64 @@
-import React from 'react';
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import Layout from "../components/layout";
+import ArticlesComponent from "../components/articles";
+import "../assets/css/main.css";
 
-import { StaticQuery, graphql } from 'gatsby';
+const IndexPage = () => {
+  const data = useStaticQuery(query);
+
+  return (
+    <Layout seo={data.strapiHomepage.seo}>
+      <div className="uk-section">
+        <div className="uk-container uk-container-large">
+          <h1>{data.strapiHomepage.title}</h1>
+          <ArticlesComponent articles={data.allStrapiArticle.edges} />
+        </div>
+      </div>
+    </Layout>
+  );
+};
 
 const query = graphql`
   query {
-    allStrapiRestaurant {
+    strapiHomepage {
+      title
+      seo {
+        metaTitle
+        metaDescription
+        shareImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+    allStrapiArticle(filter: { status: { eq: "published" } }) {
       edges {
         node {
           strapiId
-          name
-          description
+          slug
+          title
+          category {
+            name
+          }
+          image {
+            localFile {
+              publicURL
+            }
+          }
+          author {
+            username
+            picture {
+              localFile {
+                publicURL
+              }
+            }
+          }
         }
       }
     }
   }
 `;
-
-const IndexPage = () => (
-  <StaticQuery
-    query={query}
-    render={data => (
-      <ul>
-        {data.allStrapiRestaurant.edges.map(restaurant => (
-          <li key={restaurant.node.strapiId}>{restaurant.node.name}</li>
-        ))}
-      </ul>
-    )}
-  />
-);
 
 export default IndexPage;

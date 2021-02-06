@@ -1,89 +1,149 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
+import React from "react";
+import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+const SEO = ({ seo = {} }) => {
+  const { strapiGlobal } = useStaticQuery(query);
+  const { defaultSeo, siteName, favicon } = strapiGlobal;
 
-function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
+  // Merge default and page-specific SEO values
+  const fullSeo = { ...defaultSeo, ...seo };
+
+  const getMetaTags = () => {
+    const tags = [];
+
+    if (fullSeo.metaTitle) {
+      tags.push(
+        {
+          property: "og:title",
+          content: fullSeo.metaTitle,
+        },
+        {
+          name: "twitter:title",
+          content: fullSeo.metaTitle,
         }
-      }
-    `
-  )
+      );
+    }
+    if (fullSeo.metaDescription) {
+      tags.push(
+        {
+          name: "description",
+          content: fullSeo.metaDescription,
+        },
+        {
+          property: "og:description",
+          content: fullSeo.metaDescription,
+        },
+        {
+          name: "twitter:description",
+          content: fullSeo.metaDescription,
+        }
+      );
+    }
+    if (fullSeo.shareImage) {
+      const imageUrl =
+        (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
+        fullSeo.shareImage.publicURL;
+      tags.push(
+        {
+          name: "image",
+          content: imageUrl,
+        },
+        {
+          property: "og:image",
+          content: imageUrl,
+        },
+        {
+          name: "twitter:image",
+          content: imageUrl,
+        }
+      );
+    }
+    if (fullSeo.article) {
+      tags.push({
+        property: "og:type",
+        content: "article",
+      });
+    }
+    tags.push({ name: "twitter:card", content: "summary_large_image" });
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+    return tags;
+  };
+
+  const metaTags = getMetaTags();
 
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
-      meta={[
+      title={fullSeo.metaTitle}
+      titleTemplate={`%s | ${siteName}`}
+      link={[
         {
-          name: `description`,
-          content: metaDescription,
+          rel: "icon",
+          href: favicon.publicURL,
         },
         {
-          property: `og:title`,
-          content: title,
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css?family=Staatliches",
         },
         {
-          property: `og:description`,
-          content: metaDescription,
+          rel: "stylesheet",
+          href:
+            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/css/uikit.min.css",
+        },
+      ]}
+      script={[
+        {
+          src:
+            "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js",
         },
         {
-          property: `og:type`,
-          content: `website`,
+          src:
+            "https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js",
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js",
         },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
+      ]}
+      meta={metaTags}
     />
-  )
-}
+  );
+};
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
+export default SEO;
 
 SEO.propTypes = {
+  title: PropTypes.string,
   description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
+  image: PropTypes.string,
+  article: PropTypes.bool,
+};
 
-export default SEO
+SEO.defaultProps = {
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+};
+
+const query = graphql`
+  query {
+    strapiGlobal {
+      siteName
+      favicon {
+        localFile {
+          publicURL
+        }
+      }
+      defaultSeo {
+        metaTitle
+        metaDescription
+        shareImage {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+`;
