@@ -2,7 +2,7 @@
   "name": "naojamg.dev",
   "private": true,
   "description": "Blog en español para aprender diferentes tecnologías web.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Joel Morales <naojamg>",
   "dependencies": {
     "gatsby": "^2.26.1",
