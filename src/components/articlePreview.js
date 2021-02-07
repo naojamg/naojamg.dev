@@ -14,7 +14,7 @@ const ArticlePreview = ({
 }) => {
   return (
     <div className='articlePreview'>
-      <img src={image} alt={`${title} - Imágen de portada`} />
+      <img src={`.${image}`} alt={`${title} - Imágen de portada`} />
       <div className="articlePreview-footer">
         <div className="articlePreview-footer-header">
           <div className="badgeContainer">
