@@ -25,9 +25,15 @@ const Layout = ({ children, seo }) => (
     render={(data) => (
       <>
         <Seo seo={seo} />
-        {/* <Nav /> */}
-        <main>{children}</main>
-        <Footer />
+        <div className="viewport">
+          <div className="viewport-top">
+            <Nav />
+            <main>{children}</main>
+          </div>
+          <div className="viewport-bottom">
+            <Footer />
+          </div>
+        </div>
       </>
     )}
   />

@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
-import ContactPreview from '../components/contactPreview';
 import ArticlePreview from '../components/articlePreview';
 import "../assets/css/main.css";
 
@@ -9,11 +8,6 @@ const IndexPage = () => {
   const data = useStaticQuery(query);
   return (
     <Layout seo={data.strapiHomepage.seo}>
-      <ContactPreview
-        picture="https://avatars.githubusercontent.com/u/12994754?s=460&u=3400532c9c0ca38279758c748926a5c5c6279f0d&v=4"
-        name='Joel Morales Gaarcía'
-        profession='Software Developer'
-      />
       <img className="homePage-img" src={`.${data.strapiHomepage.seo[0].shareImage.localFile.publicURL}`} alt={`Imágen principal`} />
       <div className="article-container">
         <p className="article-container-title">Lo más reciente</p>
