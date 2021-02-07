@@ -41,11 +41,6 @@ const query = graphql`
           twitter
           github
           buyCoffe
-          picture {
-            localFile {
-              publicURL
-            }
-          }
         }
       }
     }

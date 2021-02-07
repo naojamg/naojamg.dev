@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import Moment from "react-moment";
 import PillBadge from './pillBadge';
+import Img from 'gatsby-image';
 import 'moment/locale/es';
 
 const ArticlePreview = ({
@@ -14,7 +15,7 @@ const ArticlePreview = ({
 }) => {
   return (
     <div className='articlePreview'>
-      <img src={`.${image}`} alt={`${title} - Imágen de portada`} title={`${title} - Imágen de portada`}/>
+      <Img fluid={image} alt={`${title} - Imágen de portada`} title={`${title} - Imágen de portada`}/>
       <div className="articlePreview-footer">
         <div className="articlePreview-footer-header">
           <div className="badgeContainer">

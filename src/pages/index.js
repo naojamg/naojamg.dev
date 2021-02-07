@@ -2,19 +2,20 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 import ArticlePreview from '../components/articlePreview';
+import Img from 'gatsby-image';
 import "../assets/css/main.css";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
   return (
     <Layout seo={data.strapiHomepage.seo}>
-      <img className="homePage-img" src={`.${data.strapiHomepage.seo.shareImage.localFile.publicURL}`} alt={`Imágen principal`} title={`Imágen principal`} />
+      <Img className="homePage-img" fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid} alt={`Imágen principal`} title={`Imágen principal`} />
       <div className="article-container">
         <p className="article-container-title">Los más recientes</p>
         {data.allStrapiArticle.edges.map((article, i) => {
           return (
             <ArticlePreview
-              image={article.node.image.localFile.publicURL}
+              image={article.node.image.localFile.childImageSharp.fluid}
               published_at={article.node.published_at}
               categories={article.node.category}
               title={article.node.title}
@@ -38,7 +39,11 @@ const query = graphql`
         metaDescription
         shareImage {
           localFile {
-            publicURL
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
           }
         }
       }
@@ -59,14 +64,22 @@ const query = graphql`
           }
           image {
             localFile {
-              publicURL
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
           author {
             username
             picture {
               localFile {
-                publicURL
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
           }

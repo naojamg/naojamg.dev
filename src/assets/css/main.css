@@ -36,7 +36,7 @@ p, h2 {
   font-size: 14px;
 }
 
-.contactPreview img {
+.contactPreview-img {
   border-radius: 50%;
   width: 54px;
   height: 54px;
@@ -143,10 +143,10 @@ footer {
   font-size: 12px;
   display: flex;
   justify-content: center;
-  height: 80px;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  padding: 10px;
 }
 
 .socialContainer {

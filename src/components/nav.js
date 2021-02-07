@@ -8,7 +8,7 @@ const Nav = () => {
     <nav>
       <Link to="/" title="Inicio" title="Inicio">
         <ContactPreview
-          picture={data.allStrapiUser.edges[0].node.picture.localFile.publicURL}
+          picture={data.allStrapiUser.edges[0].node.picture.localFile.childImageSharp.fluid}
           name={data.allStrapiUser.edges[0].node.name}
           profession={data.allStrapiUser.edges[0].node.profession}
         />
@@ -26,7 +26,11 @@ const query = graphql`
           profession
           picture {
             localFile {
-              publicURL
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
             }
           }
         }

@@ -1,9 +1,10 @@
 import React from "react";
+import Img from 'gatsby-image';
 
 const ContactPreview = ({ picture, name, profession }) => {
   return (
     <div className='contactPreview'>
-      <img src={`.${picture}`} alt="Foto de contacto" title="Foto de contacto" />
+      <Img className="contactPreview-img" fluid={picture} alt="Foto de contacto" title="Foto de contacto" />
       <div className='contactPreview-info'>
         <p className='contactPreview-name'>{name}</p>
         <p className='contactPreview-profession'>{profession}</p>
