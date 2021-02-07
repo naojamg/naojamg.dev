@@ -6,7 +6,7 @@ const Nav = () => {
   const data = useStaticQuery(query);
   return (
     <nav>
-      <Link to="/">
+      <Link to="/" title="Inicio" title="Inicio">
         <ContactPreview
           picture={data.allStrapiUser.edges[0].node.picture.localFile.publicURL}
           name={data.allStrapiUser.edges[0].node.name}
