@@ -3,7 +3,6 @@ require("dotenv").config({
 });
 
 module.exports = {
-  pathPrefix: "/naojamg.dev",
   siteMetadata: {
     title: `naojamg.dev`,
     description: `Blog en español para aprender diferentes tecnologías web.`,
