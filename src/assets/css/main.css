@@ -7,8 +7,11 @@
 
 body {
   background-color: var(--dark-main-bg);
-  /*background-color: var(--text-white);*/
   margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 p, h2 {
@@ -121,4 +124,16 @@ p, h2 {
   padding: 4px 14px;
   cursor: pointer;
   font-size: 12px;
+}
+
+footer {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background-color: var(--dark-footer);
+  color: var(--sub-text-white);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  align-items: center;
 }

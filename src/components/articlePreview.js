@@ -24,6 +24,7 @@ const ArticlePreview = ({
                   text={category.name}
                   backgroundColor={category.backgroundColor}
                   color={category.color}
+                  key={category.name}
                 />
               );
             })}

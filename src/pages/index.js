@@ -26,6 +26,7 @@ const IndexPage = () => {
               title={article.node.title}
               description={article.node.description}
               slug={article.node.slug}
+              key={article.node.strapiId}
             />
           );
         })}

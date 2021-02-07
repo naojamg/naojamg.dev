@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import Nav from "./nav";
 import Seo from "./seo";
+import Footer from "./footer"
 
 const Layout = ({ children, seo }) => (
   <StaticQuery
@@ -24,8 +25,9 @@ const Layout = ({ children, seo }) => (
     render={(data) => (
       <>
         <Seo seo={seo} />
-        <Nav />
+        {/* <Nav /> */}
         <main>{children}</main>
+        <Footer />
       </>
     )}
   />
