@@ -33,7 +33,7 @@ const ArticlePreview = ({
             <Moment format="DD MMM YYYY">{published_at}</Moment>
           </p>
         </div>
-        <Link to={`/article/${slug}`}>
+        <Link to={`/article/${slug}`} title={title}>
           <h2 className="articlePreview-footer-title">{title}</h2>
         </Link>
         <p className="articlePreview-footer-description">{description.slice(0, 92)}...</p>

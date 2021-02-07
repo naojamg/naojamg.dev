@@ -8,7 +8,7 @@ const IndexPage = () => {
   const data = useStaticQuery(query);
   return (
     <Layout seo={data.strapiHomepage.seo}>
-      <img className="homePage-img" src={`.${data.strapiHomepage.seo.shareImage.localFile.publicURL}`} alt={`Imágen principal`} />
+      <img className="homePage-img" src={`.${data.strapiHomepage.seo.shareImage.localFile.publicURL}`} alt={`Imágen principal`} title={`Imágen principal`} />
       <div className="article-container">
         <p className="article-container-title">Los más recientes</p>
         {data.allStrapiArticle.edges.map((article, i) => {
