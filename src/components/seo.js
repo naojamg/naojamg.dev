@@ -84,7 +84,11 @@ const SEO = ({ seo = {} }) => {
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family=Staatliches",
+          href: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap",
         },
       ]}
       meta={metaTags}

@@ -6,7 +6,9 @@
 }
 
 body {
-  background-color: var(--dark-main-bg)
+  background-color: var(--dark-main-bg);
+  /*background-color: var(--text-white);*/
+  margin: 0;
 }
 
 p, h2 {
@@ -14,15 +16,18 @@ p, h2 {
 }
 
 .contactPreview {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
   display: flex;
   align-items: center;
   cursor: pointer;
   color: var(--text-white);
+  padding: 22px 14px;
 }
 
 .contactPreview img {
   border-radius: 50%;
-  width: 12%;
+  width: 54px;
 }
 
 .contactPreview .contactPreview-info {
@@ -31,38 +36,39 @@ p, h2 {
 }
 
 .contactPreview .contactPreview-name {
-  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
 }
 
-.badgeContainer {
-  display: flex;
-  justify-content: start;
-  width: 70%;
-  overflow-x: hidden;
+.homePage-img {
+  width: 100%;
 }
 
-.badgeContainer > div {
-  margin-right: 10px;
+.article-container {
+  padding: 30px 14px;
 }
 
-.pillBadge {
-  border-radius: 20px;
-  text-align: center;
-  padding: 4px 14px;
-  cursor: pointer;
-  font-size: 12px;
+.article-container .article-container-title {
+  margin: 0px 0px 30px;
+  font-size: 20px;
+}
+
+.article-container-title {
+  color: var(--text-white);
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
 }
 
 .articlePreview {
   border-radius: 10px;
   background-color: var(--dark-footer);
   color: var(--sub-text-white);
+  margin-bottom: 30px;
 }
 
 .articlePreview img {
   border-radius: 10px 10px 0 0;
   width: 100%;
-  height: 260px;
 }
 
 .articlePreview .articlePreview-footer {
@@ -75,11 +81,44 @@ p, h2 {
 }
 
 .articlePreview .articlePreview-footer-title {
-  margin: 12px 0px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  margin: 18px 0px 8px;
   color: var(--text-white);
   cursor: pointer;
+  font-size: 18px;
+}
+
+.articlePreview .articlePreview-footer-published_at {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .articlePreview .articlePreview-footer-description {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
   text-align: justify;
+  font-size: 12px;
+}
+
+.badgeContainer {
+  display: flex;
+  justify-content: start;
+  width: 70%;
+  overflow-x: hidden;
+}
+
+.badgeContainer>div {
+  margin-right: 10px;
+}
+
+.pillBadge {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+  border-radius: 20px;
+  text-align: center;
+  padding: 4px 14px;
+  cursor: pointer;
+  font-size: 12px;
 }

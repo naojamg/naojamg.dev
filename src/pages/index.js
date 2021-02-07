@@ -7,7 +7,6 @@ import "../assets/css/main.css";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);
-
   return (
     <Layout seo={data.strapiHomepage.seo}>
       <ContactPreview
@@ -15,18 +14,22 @@ const IndexPage = () => {
         name='Joel Morales Gaarcía'
         profession='Software Developer'
       />
-      {data.allStrapiArticle.edges.map((article, i) => {
-        return (
-          <ArticlePreview
-            image={article.node.image.localFile.publicURL}
-            published_at={article.node.published_at}
-            categories={article.node.category}
-            title={article.node.title}
-            description={article.node.description}
-            slug={article.node.slug}
-          />
-        );
-      })}
+      <img className="homePage-img" src={`.${data.strapiHomepage.seo[0].shareImage.localFile.publicURL}`} alt={`Imágen principal`} />
+      <div className="article-container">
+        <p className="article-container-title">Lo más reciente</p>
+        {data.allStrapiArticle.edges.map((article, i) => {
+          return (
+            <ArticlePreview
+              image={article.node.image.localFile.publicURL}
+              published_at={article.node.published_at}
+              categories={article.node.category}
+              title={article.node.title}
+              description={article.node.description}
+              slug={article.node.slug}
+            />
+          );
+        })}
+      </div>
     </Layout>
   );
 };
