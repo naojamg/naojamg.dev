@@ -5,10 +5,10 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(query);
-  const { defaultSeo, siteName, favicon } = strapiGlobal;
+  const { siteName, favicon } = strapiGlobal;
 
   // Merge default and page-specific SEO values
-  const fullSeo = { ...defaultSeo, ...seo };
+  const fullSeo = { ...seo };
 
   const getMetaTags = () => {
     const tags = [];
@@ -44,7 +44,7 @@ const SEO = ({ seo = {} }) => {
     if (fullSeo.shareImage) {
       const imageUrl =
         (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        fullSeo.shareImage.publicURL;
+        fullSeo.shareImage.localFile.publicURL;
       tags.push(
         {
           name: "image",
@@ -77,10 +77,13 @@ const SEO = ({ seo = {} }) => {
     <Helmet
       title={fullSeo.metaTitle}
       titleTemplate={`%s | ${siteName}`}
+      htmlAttributes={{
+        lang: 'es',
+      }}
       link={[
         {
           rel: "icon",
-          href: favicon.publicURL,
+          href: favicon.localFile.publicURL,
         },
         {
           rel: "stylesheet",
@@ -119,15 +122,6 @@ const query = graphql`
       favicon {
         localFile {
           publicURL
-        }
-      }
-      defaultSeo {
-        metaTitle
-        metaDescription
-        shareImage {
-          localFile {
-            publicURL
-          }
         }
       }
     }

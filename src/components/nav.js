@@ -1,28 +1,38 @@
 import React from "react";
-import { Link, StaticQuery, graphql } from "gatsby";
+import { graphql, useStaticQuery, Link } from "gatsby";
 import ContactPreview from "./contactPreview"
 
-const Nav = () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        strapiGlobal {
-          siteName
+const Nav = () => {
+  const data = useStaticQuery(query);
+  return (
+    <nav>
+      <Link to="/">
+        <ContactPreview
+          picture={data.allStrapiUser.edges[0].node.picture.localFile.publicURL}
+          name={data.allStrapiUser.edges[0].node.name}
+          profession={data.allStrapiUser.edges[0].node.profession}
+        />
+      </Link>
+    </nav>
+  );
+};
+
+const query = graphql`
+  query {
+    allStrapiUser {
+      edges {
+        node {
+          name
+          profession
+          picture {
+            localFile {
+              publicURL
+            }
+          }
         }
       }
-    `}
-    render={(data) => (
-      <nav>
-        <Link to="/">
-          <ContactPreview
-            picture="https://avatars.githubusercontent.com/u/12994754?s=460&u=3400532c9c0ca38279758c748926a5c5c6279f0d&v=4"
-            name={data.strapiGlobal.siteName}
-            profession='Software Developer'
-          />
-        </Link>
-      </nav>
-    )}
-  />
-);
+    }
+}
+`;
 
 export default Nav;

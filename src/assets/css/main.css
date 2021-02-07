@@ -33,11 +33,13 @@ p, h2 {
   cursor: pointer;
   color: var(--text-white);
   padding: 22px 14px;
+  font-size: 14px;
 }
 
 .contactPreview img {
   border-radius: 50%;
   width: 54px;
+  height: 54px;
 }
 
 .contactPreview .contactPreview-info {
@@ -60,7 +62,7 @@ p, h2 {
 
 .article-container .article-container-title {
   margin: 0px 0px 30px;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .article-container-title {
@@ -93,10 +95,10 @@ p, h2 {
 .articlePreview .articlePreview-footer-title {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
-  margin: 18px 0px 8px;
+  margin: 12px 0px 4px;
   color: var(--text-white);
   cursor: pointer;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .articlePreview .articlePreview-footer-published_at {
@@ -144,4 +146,16 @@ footer {
   height: 80px;
   align-items: center;
   text-align: center;
+  flex-direction: column;
+}
+
+.socialContainer {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.socialLink {
+  height: 18px;
 }
