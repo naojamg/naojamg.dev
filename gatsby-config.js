@@ -41,5 +41,22 @@ module.exports = {
         queryLimit: 1000,
       },
     },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Lato",
+              variants: ["400", "700"],
+            },
+            {
+              family: "Nunito",
+              variants: ["300", "400", "600"],
+            },
+          ]
+        }
+      }
+    }
   ],
 }
