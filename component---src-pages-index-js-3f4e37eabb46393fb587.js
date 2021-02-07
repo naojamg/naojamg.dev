@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{RXBc:function(e,n,t){"use strict";t.r(n);var r=t("q1tI"),a=t.n(r),u=t("Wbzz");n.default=function(){return a.a.createElement(u.StaticQuery,{query:"2603742205",render:function(e){return a.a.createElement("ul",null,e.allStrapiRestaurant.edges.map((function(e){return a.a.createElement("li",{key:e.node.strapiId},e.node.name)})))}})}}}]);
-//# sourceMappingURL=component---src-pages-index-js-3f4e37eabb46393fb587.js.map
