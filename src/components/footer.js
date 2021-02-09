@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
-import Platzi from "../assets/images/blog_Platzi.png"
-import Twitter from "../assets/images/blog_Twitter.png"
-import Github from "../assets/images/blog_Github.png"
-import BuyCoffe from "../assets/images/blog_Buy_Coffee.png"
+import Platzi from "../assets/images/blog_svg_platzi.svg"
+import Twitter from "../assets/images/blog_svg_twitter.svg"
+import Github from "../assets/images/blog_svg_github.svg"
+import BuyCoffe from "../assets/images/blog_svg_buycoffee.svg"
 
 const Footer = ({ text, backgroundColor, color }) => {
   const data = useStaticQuery(query);

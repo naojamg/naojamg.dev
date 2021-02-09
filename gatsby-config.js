@@ -9,6 +9,19 @@ module.exports = {
     author: `@naojamg`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `naojamg.dev`,
+        short_name: `naojamg.dev`,
+        start_url: `/`,
+        background_color: `#1F2935`,
+        theme_color: `#1F2935`,
+        display: `standalone`,
+        icon: `src/assets/images/gatsby.png`
+      },
+    },
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
