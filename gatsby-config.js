@@ -22,6 +22,14 @@ module.exports = {
         icon_options: {
           purpose: `any maskable`,
         },
+        icons: [
+          {
+            src: `src/assets/images/gatsby.png`,
+            sizes: `196x196`,
+            type: `image/png`,
+            purpose: `maskable`
+          },
+        ],
       },
     },
     `gatsby-plugin-offline`,
@@ -44,7 +52,7 @@ module.exports = {
         background_color: `#1F2935`,
         theme_color: `#1F2935`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/gatsby.png`, 
       },
     },
     {
