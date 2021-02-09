@@ -17,7 +17,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#1F2935`,
         theme_color: `#1F2935`,
-        display: `standalone`,
+        display: `minimal-ui`,
         icon: `src/assets/images/gatsby.png`,
         icon_options: {
           purpose: `any maskable`,
@@ -43,18 +43,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#1F2935`,
-        theme_color: `#1F2935`,
-        display: `minimal-ui`,
-        icon: `src/assets/images/gatsby.png`, 
-      },
-    },
     {
       resolve: "gatsby-source-strapi",
       options: {
