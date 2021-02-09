@@ -22,14 +22,6 @@ module.exports = {
         icon_options: {
           purpose: `any maskable`,
         },
-        icons: [
-          {
-            src: `src/assets/images/gatsby.png`,
-            sizes: `196x196`,
-            type: `image/png`,
-            purpose: `maskable`
-          },
-        ],
       },
     },
     `gatsby-plugin-offline`,
