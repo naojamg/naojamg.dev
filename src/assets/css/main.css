@@ -112,14 +112,14 @@ p, h2 {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .article-detail-content {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   text-align: left;
-  font-size: 12px;
+  font-size: 14px;
   background-color: var(--dark-main-bg);
   color: var(--sub-text-white);
 }
