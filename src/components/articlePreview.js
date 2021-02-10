@@ -15,7 +15,9 @@ const ArticlePreview = ({
 }) => {
   return (
     <div className='articlePreview'>
-      <Img fluid={image} alt={`${title} - Imágen de portada`} title={`${title} - Imágen de portada`}/>
+      <Link to={`/article/${slug}`} title={title}>
+        <Img fluid={image} alt={`${title} - Imágen de portada`} title={`${title} - Imágen de portada`} />
+      </Link>
       <div className="articlePreview-footer">
         <div className="articlePreview-footer-header">
           <div className="badgeContainer">
@@ -25,7 +27,7 @@ const ArticlePreview = ({
                   text={category.name}
                   backgroundColor={category.backgroundColor}
                   color={category.color}
-                  key={category.name}
+                  key={`article__right__${category.name}`}
                 />
               );
             })}

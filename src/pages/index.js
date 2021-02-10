@@ -9,9 +9,9 @@ const IndexPage = () => {
   const data = useStaticQuery(query);
   return (
     <Layout seo={data.strapiHomepage.seo}>
-      <Img className="homePage-img" fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid} alt={`Imágen principal`} title={`Imágen principal`} />
+      <Img fadeIn={false} loading="eager" className="homePage-img" fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid} alt={`Imágen principal`} title={`Imágen principal`} />
       <div className="article-container">
-        <p className="article-container-title">Los más recientes</p>
+        <h1 className="article-container-title">Los más recientes</h1>
         {data.allStrapiArticle.edges.map((article, i) => {
           return (
             <ArticlePreview
@@ -21,7 +21,7 @@ const IndexPage = () => {
               title={article.node.title}
               description={article.node.description}
               slug={article.node.slug}
-              key={article.node.strapiId}
+              key={`article__${article.node.strapiId}`}
             />
           );
         })}
@@ -39,9 +39,10 @@ const query = graphql`
         metaDescription
         shareImage {
           localFile {
+            publicURL
             childImageSharp {
               fluid {
-                ...GatsbyImageSharpFluid_withWebp
+                ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
           }
@@ -66,7 +67,7 @@ const query = graphql`
             localFile {
               childImageSharp {
                 fluid {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
@@ -77,7 +78,7 @@ const query = graphql`
               localFile {
                 childImageSharp {
                   fluid {
-                    ...GatsbyImageSharpFluid_withWebp
+                    ...GatsbyImageSharpFluid_withWebp_noBase64
                   }
                 }
               }

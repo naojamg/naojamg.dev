@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import Platzi from "../assets/images/blog_svg_platzi.svg"
 import Twitter from "../assets/images/blog_svg_twitter.svg"
 import Github from "../assets/images/blog_svg_github.svg"
@@ -13,18 +13,18 @@ const Footer = ({ text, backgroundColor, color }) => {
     <footer>
       <p>{`Joel Morales @naojamg | Todos los derechos reservados © ${year}.`}</p>
       <div className="socialContainer">
-        <Link to={data.allStrapiUser.edges[0].node.platzi} target="_blank" title="Platzi" rel="noopener">
+        <a href={data.allStrapiUser.edges[0].node.platzi} target="_blank" title="Platzi" rel="noopener noreferrer">
           <img className="socialLink" width="50" height="50" src={Platzi} alt="Platzi" title="Platzi" />
-        </Link>
-        <Link to={data.allStrapiUser.edges[0].node.twitter} target="_blank" title="Twitter" rel="noopener">
+        </a>
+        <a href={data.allStrapiUser.edges[0].node.twitter} target="_blank" title="Twitter" rel="noopener noreferrer">
           <img className="socialLink" width="50" height="50" src={Twitter} alt="Twitter" title="Twitter" />
-        </Link>
-        <Link to={data.allStrapiUser.edges[0].node.github} target="_blank" title="Github" rel="noopener">
+        </a>
+        <a href={data.allStrapiUser.edges[0].node.github} target="_blank" title="Github" rel="noopener noreferrer">
           <img className="socialLink" width="50" height="50" src={Github} alt="Github" title="Github" />
-        </Link>
-        <Link to={data.allStrapiUser.edges[0].node.buyCoffe} target="_blank" title="Buy me a Coffe" rel="noopener">
+        </a>
+        <a href={data.allStrapiUser.edges[0].node.buyCoffe} target="_blank" title="Buy me a Coffe" rel="noopener noreferrer">
           <img className="socialLink" width="50" height="50" src={BuyCoffe} alt="Buy me a Coffe" title="Buy me a Coffe" />
-        </Link>
+        </a>
       </div>
     </footer>
   );

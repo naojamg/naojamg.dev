@@ -6,7 +6,7 @@ const Nav = () => {
   const data = useStaticQuery(query);
   return (
     <nav>
-      <Link to="/" title="Inicio" title="Inicio">
+      <Link to="/" title="Inicio">
         <ContactPreview
           picture={data.allStrapiUser.edges[0].node.picture.localFile.childImageSharp.fluid}
           name={data.allStrapiUser.edges[0].node.name}
@@ -28,7 +28,7 @@ const query = graphql`
             localFile {
               childImageSharp {
                 fluid {
-                  ...GatsbyImageSharpFluid_withWebp
+                  ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
             }
