@@ -59,7 +59,7 @@ p, h2 {
   font-weight: 700;
 }
 
-.homePage-img {
+.homePage-img, .homePage-img {
   width: 100%;
 }
 
@@ -237,5 +237,8 @@ footer {
 @media (min-width: 768px) {
   .article-container {
     grid-template-columns: 1fr 1fr;
+  }
+  .homePage-img, .articleDetail-img {
+    height: 50vh;
   }
 }
