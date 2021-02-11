@@ -154,12 +154,13 @@ p, h2 {
   margin: 10px 0px;
 }
 
-.article-detail-content-html>pre {
+pre {
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+pre code span {
   background-color: var(--dark-footer);
-  padding: 16px;
-  overflow: auto;
-  line-height: 1.45;
-  border-radius: 6px;
 }
 
 .article-detail-content-html * a {
@@ -170,6 +171,10 @@ p, h2 {
   margin: 8px 0px;
 }
 
+.article-detail-content-footer {
+  margin: 30px 0px;
+}
+
 .article-detail-content-html {
   margin-bottom: 10px;
 }
@@ -177,7 +182,6 @@ p, h2 {
 .badgeContainer {
   display: flex;
   justify-content: flex-start;
-  width: 70%;
   overflow-x: hidden;
 }
 

@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import Markdown from "react-markdown";
 import PillBadge from '../components/pillBadge';
 import "../assets/css/main.css";
+import CodeBlock from "../components/CodeBlock";
 
 export const query = graphql`
   query ArticleQuery($slug: String!) {
@@ -58,7 +59,7 @@ const Article = ({ data }) => {
         <div className="article-detail-content">
           <Img fluid={article.image.localFile.childImageSharp.fluid} alt={article.title} title={article.title} />
           <p className="article-detail-content-desc">{article.description}</p>
-          <Markdown className="article-detail-content-html" source={article.content} escapeHtml={false} />
+          <Markdown className="article-detail-content-html" source={article.content} escapeHtml={false} renderers={{ code: CodeBlock }} />
           <div className="article-detail-content-footer">
             <p>{`Publicado por: ${article.author.name}`}</p>
             <div className="badgeContainer">

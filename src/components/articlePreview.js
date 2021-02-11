@@ -20,7 +20,7 @@ const ArticlePreview = ({
       </Link>
       <div className="articlePreview-footer">
         <div className="articlePreview-footer-header">
-          <div className="badgeContainer">
+          <div className="badgeContainer" style={{ width: '70%' }}>
             {categories.map((category, i) => {
               return (
                 <PillBadge
