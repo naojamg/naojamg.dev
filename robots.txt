@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://naojamg.netlify.app/sitemap.xml
-Host: https://naojamg.netlify.app
+Sitemap: https://naojamg.dev/sitemap.xml
+Host: https://naojamg.dev
