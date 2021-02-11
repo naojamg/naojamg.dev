@@ -42,7 +42,7 @@ const SEO = ({ seo = {} }) => {
       );
     }
     if (fullSeo.shareImage) {
-      const imageUrl = '../..' + fullSeo.shareImage.localFile.publicURL;
+      const imageUrl = typeof window !== 'undefined' ? (window.location.href + fullSeo.shareImage.localFile.publicURL) : fullSeo.shareImage.localFile.publicURL;
       console.log(imageUrl);
       tags.push(
         {
