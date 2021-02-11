@@ -16,7 +16,11 @@ const ArticlePreview = ({
   return (
     <div className='articlePreview'>
       <Link to={`/article/${slug}`} title={title}>
-        <Img fluid={image} alt={`${title} - Imágen de portada`} title={`${title} - Imágen de portada`} />
+        <Img
+          fluid={image}
+          alt={`${title} - Imágen de portada`}
+          title={`${title} - Imágen de portada`}
+        />
       </Link>
       <div className="articlePreview-footer">
         <div className="articlePreview-footer-header">

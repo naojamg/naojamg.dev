@@ -29,7 +29,7 @@ const Layout = ({ children, seo }) => (
         <div className="viewport">
           <div className="viewport-top">
             <Nav />
-            <main>{children}</main>
+            <main className="container">{children}</main>
           </div>
           <div className="viewport-bottom">
             <Footer />

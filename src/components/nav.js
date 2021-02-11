@@ -5,7 +5,7 @@ import ContactPreview from "./contactPreview"
 const Nav = () => {
   const data = useStaticQuery(query);
   return (
-    <nav>
+    <nav className="container">
       <Link to="/" title="Inicio">
         <ContactPreview
           picture={data.allStrapiUser.edges[0].node.picture.localFile.childImageSharp.fluid}

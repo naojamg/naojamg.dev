@@ -8,9 +8,16 @@ const IndexPage = () => {
   const data = useStaticQuery(query);
   return (
     <Layout seo={data.strapiHomepage.seo}>
-      <Img fadeIn={false} loading="eager" className="homePage-img" fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid} alt={`Imágen principal`} title={`Imágen principal`} />
+      <Img
+        fadeIn={false}
+        loading="eager"
+        className="homePage-img"
+        fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid}
+        alt={`Imágen principal`} title={`Imágen principal`}
+        style={{ height: '50vh' }}
+      />
+      <h1 className="article-container-title">Los más recientes</h1>
       <div className="article-container">
-        <h1 className="article-container-title">Los más recientes</h1>
         {data.allStrapiArticle.edges.map((article, i) => {
           return (
             <ArticlePreview

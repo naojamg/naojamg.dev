@@ -49,15 +49,19 @@ const Article = ({ data }) => {
 
   return (
     <Layout seo={seo}>
-      <div className="article-container">
+      <div className="article-detail">
         <div className="article-detail-content-header ">
-          <h1 className="article-container-title">{article.title}</h1>
+          <h1 className="article-detail-title">{article.title}</h1>
           <p className="article-detail-pub">
             <Moment format="DD MMM YYYY">{article.published_at}</Moment>
           </p>
         </div>
         <div className="article-detail-content">
-          <Img fluid={article.image.localFile.childImageSharp.fluid} alt={article.title} title={article.title} />
+          <Img
+            fluid={article.image.localFile.childImageSharp.fluid}
+            alt={article.title}
+            title={article.title}
+          />
           <p className="article-detail-content-desc">{article.description}</p>
           <Markdown className="article-detail-content-html" source={article.content} escapeHtml={false} renderers={{ code: CodeBlock }} />
           <div className="article-detail-content-footer">
