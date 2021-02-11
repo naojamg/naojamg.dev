@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 import ArticlePreview from '../components/articlePreview';
 import Img from 'gatsby-image';
-import "../assets/css/main.css";
 
 const IndexPage = () => {
   const data = useStaticQuery(query);

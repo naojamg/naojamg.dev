@@ -156,7 +156,10 @@ p, h2 {
 
 .article-detail-content-html>pre {
   background-color: var(--dark-footer);
-  padding: 15px;
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  border-radius: 6px;
 }
 
 .article-detail-content-html * a {

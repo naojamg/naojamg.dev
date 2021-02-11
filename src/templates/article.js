@@ -5,6 +5,7 @@ import Moment from "react-moment";
 import Layout from "../components/layout";
 import Markdown from "react-markdown";
 import PillBadge from '../components/pillBadge';
+import "../assets/css/main.css";
 
 export const query = graphql`
   query ArticleQuery($slug: String!) {
