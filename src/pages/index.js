@@ -14,6 +14,7 @@ const IndexPage = () => {
         className="homePage-img"
         fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid}
         alt={`Imágen principal`} title={`Imágen principal`}
+        imgStyle={{ objectFit: "contain" }}
       />
       <h1 className="article-container-title">Los más recientes</h1>
       <div className="article-container">

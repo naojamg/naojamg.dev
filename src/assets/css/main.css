@@ -20,7 +20,7 @@ p, h2 {
 }
 
 .container {
-  max-width: 1120px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 4vw;
 }
@@ -243,8 +243,5 @@ footer {
 @media (min-width: 768px) {
   .article-container {
     grid-template-columns: 1fr 1fr;
-  }
-  .homePage-img, .articleDetail-img {
-    height: 50vh;
   }
 }

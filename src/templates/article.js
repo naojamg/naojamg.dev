@@ -62,6 +62,7 @@ const Article = ({ data }) => {
             alt={article.title}
             title={article.title}
             className="articleDetail-img"
+            imgStyle={{ objectFit: "contain" }}
           />
           <p className="article-detail-content-desc">{article.description}</p>
           <Markdown className="article-detail-content-html" source={article.content} escapeHtml={false} renderers={{ code: CodeBlock }} />

@@ -21,6 +21,7 @@ const ArticlePreview = ({
           alt={`${title} - Imágen de portada`}
           title={`${title} - Imágen de portada`}
           className="articlePreview-img"
+          imgStyle={{ objectFit: "cover" }}
         />
       </Link>
       <div className="articlePreview-footer">
