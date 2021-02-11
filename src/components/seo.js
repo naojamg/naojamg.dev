@@ -42,9 +42,8 @@ const SEO = ({ seo = {} }) => {
       );
     }
     if (fullSeo.shareImage) {
-      const imageUrl =
-        (process.env.GATSBY_ROOT_URL || "http://localhost:8000") +
-        fullSeo.shareImage.localFile.publicURL;
+      const imageUrl = '../..' + fullSeo.shareImage.localFile.publicURL;
+      console.log(imageUrl);
       tags.push(
         {
           name: "image",
