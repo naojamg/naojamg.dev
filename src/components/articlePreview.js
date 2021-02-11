@@ -20,6 +20,7 @@ const ArticlePreview = ({
           fluid={image}
           alt={`${title} - Imágen de portada`}
           title={`${title} - Imágen de portada`}
+          className="articlePreview-img"
         />
       </Link>
       <div className="articlePreview-footer">
