@@ -7,8 +7,18 @@ module.exports = {
     title: `naojamg.dev`,
     description: `Blog en español para aprender diferentes tecnologías web.`,
     author: `@naojamg`,
+    siteUrl: `https://naojamg.netlify.app`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://naojamg.netlify.app`,
+        sitemap: `https://naojamg.netlify.app/sitemap.xml`,
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
