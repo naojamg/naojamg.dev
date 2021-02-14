@@ -62,9 +62,9 @@ const makeArray = (opt = {}) => {
   return tags;
 }
 
-const pushElement = (name, content, obj) => {
+const pushElement = (property, content, obj) => {
   obj.push({
-    name,
+    property,
     content
   });
 }

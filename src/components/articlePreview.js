@@ -15,7 +15,7 @@ const ArticlePreview = ({
 }) => {
   return (
     <div className='articlePreview'>
-      <Link to={`/${slug}`} title={title}>
+      <Link to={`/${slug}/`} title={title}>
         <Img
           fadeIn={false}
           loading="eager"
@@ -44,10 +44,10 @@ const ArticlePreview = ({
             <Moment format="DD MMM YYYY">{published_at}</Moment>
           </p>
         </div>
-        <Link to={`/${slug}`} title={title}>
+        <Link to={`/${slug}/`} title={title}>
           <h2 className="articlePreview-footer-title">{title}</h2>
+          <p className="articlePreview-footer-description">{description.slice(0, 92)}...</p>
         </Link>
-        <p className="articlePreview-footer-description">{description.slice(0, 92)}...</p>
       </div>
     </div>
   );

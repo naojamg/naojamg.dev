@@ -51,7 +51,7 @@ const Article = ({ data }) => {
     type: 'article',
     image: origin + article.image.localFile.publicURL,
     image_alt: article.title,
-    url: `${origin}/${article.slug}`,
+    url: `${origin}/${article.slug}/`,
     description: article.description,
     published_at: article.published_at,
     author: article.author.name,
@@ -99,24 +99,6 @@ const Article = ({ data }) => {
               })}
             </div>
           </div>
-          {/* <div className="uk-grid-small uk-flex-left" data-uk-grid="true">
-            <div>
-              {article.author.picture && (
-                <Img
-                  fixed={article.author.picture.localFile.publicURL}
-                  imgStyle={{ position: "static", borderRadius: "50%" }}
-                />
-              )}
-            </div>
-            <div className="uk-width-expand">
-              <p className="uk-margin-remove-bottom">
-                By {article.author.username}
-              </p>
-              <p className="uk-text-meta uk-margin-remove-top">
-                <Moment format="MMM Do YYYY">{article.published_at}</Moment>
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
     </Layout>
