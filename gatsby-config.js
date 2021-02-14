@@ -1,13 +1,10 @@
 require("dotenv").config({
-  path: `.env`,
-});
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 module.exports = {
   siteMetadata: {
-    title: `naojamg.dev`,
-    description: `Blog en español para aprender diferentes tecnologías web.`,
-    author: `@naojamg`,
-    siteUrl: `https://naojamg.dev`,
+    siteUrl: `${process.env.SITE_URL}`,
   },
   plugins: [
     {
@@ -22,8 +19,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: `https://naojamg.dev`,
-        sitemap: `https://naojamg.dev/sitemap.xml`,
+        host: `${process.env.SITE_URL}`,
+        sitemap: `${process.env.SITE_URL}/sitemap.xml`,
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
@@ -56,7 +53,7 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
+        apiURL: `${process.env.API_URL}`,
         contentTypes: ["article", "category", "user"],
         singleTypes: [`homepage`, `global`],
         queryLimit: 1000,

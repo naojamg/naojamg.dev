@@ -4,10 +4,9 @@ import { useStaticQuery, graphql } from "gatsby";
 import CustomSeo from "../seo";
 
 const SEO = ({ seo = {} }) => {
-  const { strapiGlobal } = useStaticQuery(query);
+  const { strapiGlobal, site } = useStaticQuery(query);
   const { siteName, favicon } = strapiGlobal;
-
-  let origin = typeof window !== 'undefined' ? window.location.origin : '';
+  const origin = site.siteMetadata.siteUrl;
 
   const metaTags = CustomSeo({
     title: seo.title,
@@ -15,9 +14,9 @@ const SEO = ({ seo = {} }) => {
     author: seo.author,
     publisher: seo.publisher,
     type: seo.type,
-    image: seo.image,
+    image: `${origin}${seo.image}/`,
     image_alt: seo.image_alt,
-    url: seo.url,
+    url: `${origin}/${seo.url}`,
     locale: 'es_MX',
     site_name: siteName,
     article_published_time: seo.published_at,
@@ -29,7 +28,10 @@ const SEO = ({ seo = {} }) => {
     keywords: seo.keywords,
     robots: 'index, follow'
   });
-  console.log(metaTags);
+
+  console.log('metaTags: ', metaTags);
+  console.log('imagen: ', seo.image);
+  console.log('origen: ', origin);
 
   return (
     <Helmet
@@ -67,6 +69,11 @@ const query = graphql`
         localFile {
           publicURL
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

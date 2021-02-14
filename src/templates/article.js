@@ -44,14 +44,13 @@ const Article = ({ data }) => {
   const article = data.strapiArticle;
   const article_tag = ['naojamg.dev'];
   article.category.forEach(cat => article_tag.push(cat.name));
-  let origin = typeof window !== 'undefined' ? window.location.origin : '';
 
   const seo = {
     title: article.title,
     type: 'article',
-    image: origin + article.image.localFile.publicURL,
+    image: article.image.localFile.publicURL,
     image_alt: article.title,
-    url: `${origin}/${article.slug}/`,
+    url: article.slug,
     description: article.description,
     published_at: article.published_at,
     author: article.author.name,

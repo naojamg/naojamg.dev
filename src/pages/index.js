@@ -4,7 +4,6 @@ import Layout from "../components/layout";
 import ArticlePreview from '../components/articlePreview';
 import Img from 'gatsby-image';
 const IndexPage = () => {
-  let origin = typeof window !== 'undefined' ? window.location.origin : '';
   const data = useStaticQuery(query);
   return (
     <Layout seo={{
@@ -13,9 +12,9 @@ const IndexPage = () => {
       author: data.allStrapiArticle.edges[0].node.author.name,
       publisher: data.allStrapiArticle.edges[0].node.author.name,
       type: 'website',
-      image: origin + data.strapiHomepage.seo.image.localFile.publicURL,
+      image: data.strapiHomepage.seo.image.localFile.publicURL,
       image_alt: data.strapiHomepage.seo.title,
-      url: origin,
+      url: '',
       twitterSite: `@${data.allStrapiArticle.edges[0].node.author.username}`,
       twitterCreator: `@${data.allStrapiArticle.edges[0].node.author.username}`,
       twitterCard: 'summary_large_image',
