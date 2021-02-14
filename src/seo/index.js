@@ -2,9 +2,6 @@ import OpenGraph from './openGraph';
 import Twitter from './twitter';
 import General from './general';
 
-
-const tags = [];
-
 const SEO = (opt = {}) => {
   const og = OpenGraph(opt);
   const t = Twitter(opt);

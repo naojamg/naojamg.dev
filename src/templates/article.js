@@ -42,10 +42,10 @@ export const query = graphql`
 
 const Article = ({ data }) => {
   const article = data.strapiArticle;
-  const article_tag = [];
+  const article_tag = ['naojamg.dev'];
   article.category.forEach(cat => article_tag.push(cat.name));
   let origin = typeof window !== 'undefined' ? window.location.origin : '';
-  
+
   const seo = {
     title: article.title,
     type: 'article',
@@ -57,7 +57,7 @@ const Article = ({ data }) => {
     author: article.author.name,
     publisher: article.author.name,
     article_tag,
-    keywords: article_tag,
+    keywords: article_tag.reduce((prev, curr) => prev + ', ' + curr),
     twitterSite: `@${article.author.username}`,
     twitterCreator: `@${article.author.username}`,
     twitterCard: 'summary'
