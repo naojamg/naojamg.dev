@@ -29,6 +29,7 @@ const SEO = ({ seo = {} }) => {
     keywords: seo.keywords,
     robots: 'index, follow'
   });
+  console.log(metaTags);
 
   return (
     <Helmet
