@@ -11,20 +11,12 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        trackingId: "G-7MQQ1CZ8SC",
+        trackingId: `G-7MQQ1CZ8SC`,
         head: true,
-        anonymize: true,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "G-7MQQ1CZ8SC",
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: "gatsby" },
-      },
+        anonymize: true
+      }
     },
     `gatsby-plugin-sitemap`,
     {
