@@ -31,7 +31,7 @@ const SEO = ({ seo = {} }) => {
 
   return (
     <Helmet
-      title={metaTags.title}
+      title={seo.title}
       titleTemplate={`%s | ${siteName}`}
       htmlAttributes={{
         lang: 'es',
@@ -43,11 +43,11 @@ const SEO = ({ seo = {} }) => {
         },
         {
           rel: "image_src",
-          href: metaTags.image,
+          href: `${origin}${seo.image}/`,
         },
         {
           rel: "canonical",
-          href: metaTags.url,
+          href: `${origin}/${seo.url}/`,
         },
       ]}
       meta={metaTags}
