@@ -9,6 +9,8 @@ const ContactPreview = ({ picture, name, profession }) => {
         fluid={picture} alt="Foto de contacto"
         title="Foto de contacto"
         imgStyle={{ objectFit: "cover" }}
+        fadeIn={false}
+        loading="eager"
       />
       <div className='contactPreview-info'>
         <p className='contactPreview-name'>{name}</p>

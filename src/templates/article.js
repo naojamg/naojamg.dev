@@ -51,7 +51,7 @@ const Article = ({ data }) => {
     type: 'article',
     image: origin + article.image.localFile.publicURL,
     image_alt: article.title,
-    url: `${origin}/article/${article.slug}`,
+    url: `${origin}/${article.slug}`,
     description: article.description,
     published_at: article.published_at,
     author: article.author.name,
@@ -60,7 +60,7 @@ const Article = ({ data }) => {
     keywords: article_tag.reduce((prev, curr) => prev + ', ' + curr),
     twitterSite: `@${article.author.username}`,
     twitterCreator: `@${article.author.username}`,
-    twitterCard: 'summary'
+    twitterCard: 'summary_large_image'
   };
 
   return (
@@ -79,6 +79,8 @@ const Article = ({ data }) => {
             title={article.title}
             className="articleDetail-img"
             imgStyle={{ objectFit: "contain" }}
+            fadeIn={false}
+            loading="eager"
           />
           <p className="article-detail-content-desc">{article.description}</p>
           <Markdown className="article-detail-content-html" source={article.content} escapeHtml={false} renderers={{ code: CodeBlock }} />

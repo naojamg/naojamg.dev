@@ -18,7 +18,7 @@ const IndexPage = () => {
       url: origin,
       twitterSite: `@${data.allStrapiArticle.edges[0].node.author.username}`,
       twitterCreator: `@${data.allStrapiArticle.edges[0].node.author.username}`,
-      twitterCard: 'summary',
+      twitterCard: 'summary_large_image',
       keywords: 'naojamg.dev, Blog, HTML, JavaScript, CSS, React, Svelte, Vue'
     }}>
       <Img

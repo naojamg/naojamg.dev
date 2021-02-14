@@ -4,12 +4,14 @@ import Img from "gatsby-image";
 
 const Card = ({ article }) => {
   return (
-    <Link to={`/article/${article.node.slug}`} className="uk-link-reset">
+    <Link to={`/${article.node.slug}`} className="uk-link-reset">
       <div className="uk-card uk-card-muted">
         <div className="uk-card-media-top">
           <Img
             fixed={article.node.image.localFile.publicURL}
             imgStyle={{ position: "static" }}
+            fadeIn={false}
+            loading="eager"
           />
         </div>
         <div className="uk-card-body">

@@ -37,7 +37,7 @@ const metaTags = {
   article_expiration_time:  'article:expiration_time',
   article_author:           'article:author',
   article_section:          'article:section',
-  article_tag:             'article:tag',
+  article_tag:              'article:tag',
 
   profile_first_name:       'profile:first_name',
   profile_last_name:        'profile:last_name',
