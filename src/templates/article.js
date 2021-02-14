@@ -13,6 +13,7 @@ export const query = graphql`
     strapiArticle(slug: { eq: $slug }, status: { eq: "published" }) {
       strapiId
       title
+      slug
       description
       content
       published_at
@@ -33,6 +34,7 @@ export const query = graphql`
       }
       author {
         name
+        username
       }
     }
   }
@@ -40,11 +42,25 @@ export const query = graphql`
 
 const Article = ({ data }) => {
   const article = data.strapiArticle;
+  const article_tag = [];
+  article.category.forEach(cat => article_tag.push(cat.name));
+  let origin = typeof window !== 'undefined' ? window.location.origin : '';
+  
   const seo = {
-    metaTitle: article.title,
-    metaDescription: article.description,
-    shareImage: article.image,
-    article: true,
+    title: article.title,
+    type: 'article',
+    image: origin + article.image.localFile.publicURL,
+    image_alt: article.title,
+    url: `${origin}/article/${article.slug}`,
+    description: article.description,
+    published_at: article.published_at,
+    author: article.author.name,
+    publisher: article.author.name,
+    article_tag,
+    keywords: article_tag,
+    twitterSite: `@${article.author.username}`,
+    twitterCreator: `@${article.author.username}`,
+    twitterCard: 'summary'
   };
 
   return (

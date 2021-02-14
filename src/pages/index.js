@@ -3,20 +3,32 @@ import { graphql, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 import ArticlePreview from '../components/articlePreview';
 import Img from 'gatsby-image';
-
 const IndexPage = () => {
+  let origin = typeof window !== 'undefined' ? window.location.origin : '';
   const data = useStaticQuery(query);
   return (
-    <Layout seo={data.strapiHomepage.seo}>
+    <Layout seo={{
+      title: data.strapiHomepage.seo.title,
+      description: data.strapiHomepage.seo.description,
+      author: data.allStrapiArticle.edges[0].node.author.name,
+      publisher: data.allStrapiArticle.edges[0].node.author.name,
+      type: 'website',
+      image: origin + data.strapiHomepage.seo.image.localFile.publicURL,
+      image_alt: data.strapiHomepage.seo.title,
+      url: origin,
+      twitterSite: `@${data.allStrapiArticle.edges[0].node.author.username}`,
+      twitterCreator: `@${data.allStrapiArticle.edges[0].node.author.username}`,
+      twitterCard: 'summary'
+    }}>
       <Img
         fadeIn={false}
         loading="eager"
         className="homePage-img"
-        fluid={data.strapiHomepage.seo.shareImage.localFile.childImageSharp.fluid}
+        fluid={data.strapiHomepage.seo.image.localFile.childImageSharp.fluid}
         alt={`Imágen principal`} title={`Imágen principal`}
         imgStyle={{ objectFit: "contain" }}
       />
-      <h1 className="article-container-title">Los más recientes</h1>
+      <h1 className="article-container-title">{data.strapiHomepage.title}</h1>
       <div className="article-container">
         {data.allStrapiArticle.edges.map((article, i) => {
           return (
@@ -41,9 +53,9 @@ const query = graphql`
     strapiHomepage {
       title
       seo {
-        metaTitle
-        metaDescription
-        shareImage {
+        title
+        description
+        image {
           localFile {
             publicURL
             childImageSharp {
@@ -79,6 +91,7 @@ const query = graphql`
             }
           }
           author {
+            name
             username
             picture {
               localFile {

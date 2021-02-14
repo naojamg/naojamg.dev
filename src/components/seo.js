@@ -1,80 +1,38 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
+import CustomSeo from "../seo";
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal } = useStaticQuery(query);
   const { siteName, favicon } = strapiGlobal;
 
-  // Merge default and page-specific SEO values
-  const fullSeo = { ...seo };
+  let origin = typeof window !== 'undefined' ? window.location.origin : '';
 
-  const getMetaTags = () => {
-    const tags = [];
-
-    if (fullSeo.metaTitle) {
-      tags.push(
-        {
-          property: "og:title",
-          content: fullSeo.metaTitle,
-        },
-        {
-          name: "twitter:title",
-          content: fullSeo.metaTitle,
-        }
-      );
-    }
-    if (fullSeo.metaDescription) {
-      tags.push(
-        {
-          name: "description",
-          content: fullSeo.metaDescription,
-        },
-        {
-          property: "og:description",
-          content: fullSeo.metaDescription,
-        },
-        {
-          name: "twitter:description",
-          content: fullSeo.metaDescription,
-        }
-      );
-    }
-    if (fullSeo.shareImage) {
-      const imageUrl = typeof window !== 'undefined' ? (window.location.origin + fullSeo.shareImage.localFile.publicURL) : fullSeo.shareImage.localFile.publicURL;
-      console.log(imageUrl);
-      tags.push(
-        {
-          name: "image",
-          content: imageUrl,
-        },
-        {
-          property: "og:image",
-          content: imageUrl,
-        },
-        {
-          name: "twitter:image",
-          content: imageUrl,
-        }
-      );
-    }
-    if (fullSeo.article) {
-      tags.push({
-        property: "og:type",
-        content: "article",
-      });
-    }
-    tags.push({ name: "twitter:card", content: "summary_large_image" });
-
-    return tags;
-  };
-
-  const metaTags = getMetaTags();
+  const metaTags = CustomSeo({
+    title: seo.title,
+    description: seo.description,
+    author: seo.author,
+    publisher: seo.publisher,
+    type: seo.type,
+    image: seo.image,
+    image_alt: seo.image_alt,
+    url: seo.url,
+    locale: 'es_MX',
+    site_name: siteName,
+    article_published_time: seo.published_at,
+    article_author: seo.author,
+    article_tag: seo.article_tag,
+    site: seo.twitterSite,
+    card: seo.twitterCard,
+    creator: seo.twitterCreator,
+    keywords: seo.keywords,
+    robots: 'index, follow'
+  });
 
   return (
     <Helmet
-      title={fullSeo.metaTitle}
+      title={seo.title}
       titleTemplate={`%s | ${siteName}`}
       htmlAttributes={{
         lang: 'es',
@@ -82,7 +40,15 @@ const SEO = ({ seo = {} }) => {
       link={[
         {
           rel: "icon",
-          href: favicon.localFile.publicURL,
+          href: origin + favicon.localFile.publicURL,
+        },
+        {
+          rel: "image_src",
+          href: seo.image,
+        },
+        {
+          rel: "canonical",
+          href: seo.url,
         },
       ]}
       meta={metaTags}
@@ -91,20 +57,6 @@ const SEO = ({ seo = {} }) => {
 };
 
 export default SEO;
-
-SEO.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  article: PropTypes.bool,
-};
-
-SEO.defaultProps = {
-  title: null,
-  description: null,
-  image: null,
-  article: false,
-};
 
 const query = graphql`
   query {
