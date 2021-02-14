@@ -16,7 +16,7 @@ const SEO = ({ seo = {} }) => {
     type: seo.type,
     image: `${origin}${seo.image}/`,
     image_alt: seo.image_alt,
-    url: `${origin}/${seo.url}`,
+    url: `${origin}/${seo.url}/`,
     locale: 'es_MX',
     site_name: siteName,
     article_published_time: seo.published_at,
@@ -29,13 +29,9 @@ const SEO = ({ seo = {} }) => {
     robots: 'index, follow'
   });
 
-  console.log('metaTags: ', metaTags);
-  console.log('imagen: ', seo.image);
-  console.log('origen: ', origin);
-
   return (
     <Helmet
-      title={seo.title}
+      title={metaTags.title}
       titleTemplate={`%s | ${siteName}`}
       htmlAttributes={{
         lang: 'es',
@@ -47,11 +43,11 @@ const SEO = ({ seo = {} }) => {
         },
         {
           rel: "image_src",
-          href: seo.image,
+          href: metaTags.image,
         },
         {
           rel: "canonical",
-          href: seo.url,
+          href: metaTags.url,
         },
       ]}
       meta={metaTags}
