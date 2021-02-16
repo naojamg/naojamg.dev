@@ -3,6 +3,8 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import { metaTags, ldJson } from "../seo";
 
+const getLength = (text) => text ? text.length : 0;
+
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal, site } = useStaticQuery(query);
   const { siteName, favicon } = strapiGlobal;
@@ -39,7 +41,9 @@ const SEO = ({ seo = {} }) => {
     url: `${origin}/${seo.url}/`,
     published_at: seo.published_at,
     description: seo.description,
-    content: seo.content
+    content: seo.content,
+    contentCount: getLength(seo.title) + getLength(seo.description) + getLength(seo.content),
+    origin
   });
 
   return (

@@ -16,17 +16,31 @@ const ldJson = (options) => {
     "@type": options.type,
     "headline": options.title,
     "image": options.image,
-    "author": options.author,
-    "editor": options.author,
+    "author": {
+      "@type": "Person",
+      "familyName": options.author,
+    },
+    "editor": {
+      "@type": "Person",
+      "familyName": options.author,
+    },
     "genre": options.keywords,
     "keywords": options.keywords,
-    "wordcount": "1120",
-    "publisher": options.publisher,
+    "wordcount": options.contentCount,
+    "publisher": {
+      "@type": "Person",
+      "familyName": options.publisher,
+    },
     "url": options.url,
     "datePublished": options.published_at,
     "dateCreated": options.published_at,
+    "dateModified": options.published_at,
     "description": options.description,
-    "articleBody": options.content
+    "articleBody": options.content,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": options.origin
+   },
   }
 }
 
