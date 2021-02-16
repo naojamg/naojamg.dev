@@ -9,6 +9,7 @@ const IndexPage = () => {
     <Layout seo={{
       title: data.strapiHomepage.seo.title,
       description: data.strapiHomepage.seo.description,
+      content: '',
       author: data.allStrapiArticle.edges[0].node.author.name,
       publisher: data.allStrapiArticle.edges[0].node.author.name,
       type: 'website',

@@ -1,14 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import CustomSeo from "../seo";
+import { metaTags, ldJson } from "../seo";
 
 const SEO = ({ seo = {} }) => {
   const { strapiGlobal, site } = useStaticQuery(query);
   const { siteName, favicon } = strapiGlobal;
   const origin = site.siteMetadata.siteUrl;
 
-  const metaTags = CustomSeo({
+  const mt = metaTags({
     title: seo.title,
     description: seo.description,
     author: seo.author,
@@ -29,21 +29,18 @@ const SEO = ({ seo = {} }) => {
     robots: 'index, follow'
   });
 
-  const schemaHowTo = {
-    '@context': 'http://schema.org',
-    '@type': 'Article',
-    name: 'Como crear una Chrome Extension con Svelte',
-    author: {
-      '@type': 'Person',
-      name: 'Joel Morales García'
-    },
-    datePublished: '2021-02-15',
-    image: 'https://naojamg.dev/static/3f5b86689243b0555159cb49aca2cfa2/422ae/miyajima.png.png',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Joel Morales García'
-    }
-  }
+  const lj = ldJson({
+    type: 'TechArticle',
+    title: seo.title,
+    image: `${origin}${seo.image}/`,
+    author: seo.author,
+    publisher: seo.publisher,
+    keywords: seo.keywords,
+    url: `${origin}/${seo.url}/`,
+    published_at: seo.published_at,
+    description: seo.description,
+    content: seo.content
+  });
 
   return (
     <Helmet
@@ -66,9 +63,9 @@ const SEO = ({ seo = {} }) => {
           href: `${origin}/${seo.url}/`,
         },
       ]}
-      meta={metaTags}>
+      meta={mt}>
       <script type="application/ld+json">
-        {JSON.stringify(schemaHowTo)}
+        {JSON.stringify(lj)}
       </script>
     </Helmet>
   );

@@ -52,6 +52,7 @@ const Article = ({ data }) => {
     image_alt: article.title,
     url: article.slug,
     description: article.description,
+    content: article.content,
     published_at: article.published_at,
     author: article.author.name,
     publisher: article.author.name,

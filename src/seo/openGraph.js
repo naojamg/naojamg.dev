@@ -46,10 +46,10 @@ const metaTags = {
 
 };
 
-const makeArray = (opt = {}) => {
+const makeArray = (options = {}) => {
   const tags = [];
-  Object.keys(opt).forEach(key => {
-    const value = opt[key];
+  Object.keys(options).forEach(key => {
+    const value = options[key];
     const property = metaTags[key];
 
     if (value && property) {
