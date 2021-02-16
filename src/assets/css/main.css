@@ -88,6 +88,7 @@ p, h2 {
   color: var(--sub-text-white);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .articlePreview img {
@@ -117,12 +118,13 @@ p, h2 {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
   font-size: 12px;
+  width: 30%;
 }
 
 .articlePreview .articlePreview-footer-description {
   font-family: 'Nunito', sans-serif;
   font-weight: 400;
-  text-align: left;
+  text-align: justify;
   font-size: 14px;
   color: var(--sub-text-white);
 }
