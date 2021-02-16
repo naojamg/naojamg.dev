@@ -67,7 +67,7 @@ const query = graphql`
         }
       }
     }
-    allStrapiArticle(filter: { status: { eq: "published" } }) {
+    allStrapiArticle(sort: {fields: [published_at]order: DESC}, filter: { status: { eq: "published" } }) {
       edges {
         node {
           strapiId
