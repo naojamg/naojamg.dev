@@ -29,6 +29,22 @@ const SEO = ({ seo = {} }) => {
     robots: 'index, follow'
   });
 
+  const schemaHowTo = {
+    '@context': 'http://schema.org',
+    '@type': 'Article',
+    name: 'Como crear una Chrome Extension con Svelte',
+    author: {
+      '@type': 'Person',
+      name: 'Joel Morales García'
+    },
+    datePublished: '2021-02-15',
+    image: 'https://naojamg.dev/static/3f5b86689243b0555159cb49aca2cfa2/422ae/miyajima.png.png',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Joel Morales García'
+    }
+  }
+
   return (
     <Helmet
       title={seo.title}
@@ -50,8 +66,11 @@ const SEO = ({ seo = {} }) => {
           href: `${origin}/${seo.url}/`,
         },
       ]}
-      meta={metaTags}
-    />
+      meta={metaTags}>
+      <script type="application/ld+json">
+        {JSON.stringify(schemaHowTo)}
+      </script>
+    </Helmet>
   );
 };
 
