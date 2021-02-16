@@ -198,7 +198,7 @@ pre code span {
 .badgeContainer {
   display: flex;
   justify-content: flex-start;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 .badgeContainer>div {
@@ -213,6 +213,7 @@ pre code span {
   padding: 4px 14px;
   cursor: pointer;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 footer {
@@ -244,5 +245,9 @@ footer {
 @media (min-width: 768px) {
   .article-container {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .badgeContainer {
+    overflow-x: hidden;
   }
 }
