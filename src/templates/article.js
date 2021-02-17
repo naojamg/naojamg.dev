@@ -7,6 +7,7 @@ import Markdown from "react-markdown";
 import PillBadge from '../components/pillBadge';
 import "../assets/css/main.css";
 import CodeBlock from "../components/CodeBlock";
+import { Disqus } from 'gatsby-plugin-disqus';
 
 export const query = graphql`
   query ArticleQuery($slug: String!) {
@@ -42,6 +43,13 @@ export const query = graphql`
 
 const Article = ({ data }) => {
   const article = data.strapiArticle;
+
+  const disqusConfig = {
+    url: `https://naojamg.dev/${article.slug}/`,
+    identifier: article.id,
+    title: article.title
+  };
+
   const article_tag = ['naojamg.dev'];
   article.category.forEach(cat => article_tag.push(cat.name));
 
@@ -99,6 +107,9 @@ const Article = ({ data }) => {
               })}
             </div>
           </div>
+        </div>
+        <div className="disqus-article">
+          <Disqus config={disqusConfig} />
         </div>
       </div>
     </Layout>
