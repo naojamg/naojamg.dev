@@ -19,7 +19,7 @@ const CodeBlock= ({ language, value }) => {
 
 const preStyles = {
   backgroundColor: '#1F2935',
-  fontSize: '12px'
+  fontSize: '0.80em'
 }
 
 export default CodeBlock
