@@ -6,8 +6,14 @@ exports.createPages = async ({ graphql, actions }) => {
           articles: allStrapiArticle(sort: {fields: [published_at]order: DESC}, filter: { status: { eq: "published" } }) {
             edges {
               node {
-                strapiId
                 slug
+              }
+            }
+          }
+          authors: allStrapiUser {
+            edges {
+              node {
+                username
               }
             }
           }
@@ -19,20 +25,34 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  // Create blog articles pages.
   const articles = result.data.articles.edges;
+  const authors = result.data.authors.edges;
 
-  const ArticleTemplate = require.resolve("./src/templates/article.js");
+  const articleTemplate = require.resolve("./src/templates/article.js");
+  const authorTemplate = require.resolve("./src/templates/about.js");
 
+  // Create article pages
   articles.forEach((article, index) => {
     createPage({
       path: `/${article.node.slug}`,
-      component: ArticleTemplate,
+      component: articleTemplate,
       context: {
         slug: article.node.slug,
       },
     });
   });
+
+  // Create authors pages
+  authors.forEach((author, index) => {
+    createPage({
+      path: `/${author.node.username}`,
+      component: authorTemplate,
+      context: {
+        username: author.node.username,
+      },
+    });
+  });
+
 };
 
 module.exports.onCreateNode = async ({ node, actions, createNodeId }) => {

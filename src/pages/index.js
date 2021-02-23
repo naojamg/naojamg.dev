@@ -27,7 +27,7 @@ const IndexPage = () => {
         className="homePage-img"
         fluid={data.strapiHomepage.seo.image.localFile.childImageSharp.fluid}
         alt={`Imágen principal`} title={`Imágen principal`}
-        imgStyle={{ objectFit: "contain" }}
+        imgStyle={{ objectFit: "cover", opacity: 0.7}}
       />
       <h1 className="article-container-title">{data.strapiHomepage.title}</h1>
       <div className="article-container">
@@ -60,7 +60,7 @@ const query = graphql`
           localFile {
             publicURL
             childImageSharp {
-              fluid {
+              fluid(maxWidth: 1200, srcSetBreakpoints: [ 768 ]) {
                 ...GatsbyImageSharpFluid_withWebp_noBase64
               }
             }
@@ -85,7 +85,7 @@ const query = graphql`
           image {
             localFile {
               childImageSharp {
-                fluid {
+                fluid(maxWidth: 768) {
                   ...GatsbyImageSharpFluid_withWebp_noBase64
                 }
               }
@@ -94,15 +94,6 @@ const query = graphql`
           author {
             name
             username
-            picture {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp_noBase64
-                  }
-                }
-              }
-            }
           }
         }
       }
